@@ -21,4 +21,37 @@ function getHumanChoice() {
     return choice;
 }
 
-console.log(getHumanChoice());
+function playRound(humanChoice, computerChoice) {
+    let msg;
+    let humanWin = true;
+    if (humanChoice === computerChoice) {
+        msg = `Draw! Both are ${humanChoice}.`;
+    } else if (humanChoice === "rock" && computerChoice === "scissors") {
+        msg = `Win! ${humanChoice} wins over ${computerChoice}.`;
+    } else if (humanChoice === "paper" && computerChoice === "rock") {
+        msg = `Win! ${humanChoice} wins over ${computerChoice}.`;
+    } else if (humanChoice === "scissors" && computerChoice === "paper") {
+        msg = `Win! ${humanChoice} wins over ${computerChoice}.`;
+    } else {
+        msg = `Lose! ${humanChoice} lose to ${computerChoice}.`;
+        humanWin = false;
+    }
+    console.log(msg);
+    if (humanWin) humanScore++;
+    else computerScore++;
+}
+
+function playGame() {
+    let humanChoice;
+    let computerChoice;
+    for (let i = 0; i < 5; i++) {
+        humanChoice = getHumanChoice();
+        computerChoice = getComputerChoice();
+        playRound(humanChoice, computerChoice);
+    }
+}
+
+let humanScore = 0;
+let computerScore = 0;
+
+playGame();
